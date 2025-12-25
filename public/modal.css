@@ -1,0 +1,77 @@
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgba(0, 0, 0, .7); 
+}
+
+.modal-content {
+  background-color: #1e2939;
+  margin: 5rem auto;
+  padding: 20px;
+  border: 1px solid #353f4d;
+  border-radius: 10px;
+  width: 25%;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-content h2 {
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.username-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.username-form-wrapper h4 {
+  color: white;
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.username-form-wrapper h5 {
+  font-weight: 500;
+  color: #9a9fa6;
+}
+
+.username-form-wrapper input, .mimic-username-input {
+  padding: .8rem .5rem .3rem;
+  border: 1px solid #fff;
+  border-radius: 7px;
+  background-color: transparent;
+}
+
+.mimic-username-input {
+  cursor: not-allowed;
+}
+
+.mimic-username-input h4 {
+  color: #ccc;
+}
+
+.enter-username-btn {
+  background-color: #00a6f4;
+  color: white;
+  font-size: .9rem;
+  font-weight: 600;
+  border-radius: 7px;
+  padding: .5rem;
+}
+
+.enter-username-btn:hover {
+  background-color: #028ac9;
+}

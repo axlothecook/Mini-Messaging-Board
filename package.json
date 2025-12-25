@@ -1,0 +1,28 @@
+{
+  "name": "mini-messaging-board",
+  "version": "1.0.0",
+  "description": "Application of MVC model with Express.js, EJS, and JS in the form of a small messaging board.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axlothecook/Mini-Messaging-Board.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/axlothecook/Mini-Messaging-Board/issues"
+  },
+  "homepage": "https://github.com/axlothecook/Mini-Messaging-Board#readme",
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.11"
+  }
+}

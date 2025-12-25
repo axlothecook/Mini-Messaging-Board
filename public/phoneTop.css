@@ -1,0 +1,84 @@
+.phone-top-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.phone-top-div div {
+  display: flex;
+  align-items: center;
+}
+
+.user-info-wrapper {
+  padding-bottom: .5rem;
+  justify-content: space-between;
+  border-bottom: 1px solid #495463;
+}
+
+.user-info-wrapper h3 {
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 800;
+}
+
+.user-info-wrapper button {
+  padding: .3rem;
+  background-color: transparent;
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  border-radius: 30px;
+}
+
+.user-info-wrapper svg {
+  width: 1.2rem;
+  fill: #fff;
+}
+
+.username-wrapper {
+  display: flex;
+  gap: .5rem;
+}
+
+.username-wrapper h4 {
+  color: #e2e8f0;
+  font-weight: 800;
+  font-size: .9rem;
+}
+
+.username-icon-wrapper {
+  position: relative;
+}
+
+.username-icon-wrapper div:first-of-type {
+  background-color: #f4f4f5;
+  border: 4px solid #ad46ff;
+  border-radius: 50%;
+  padding: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.username-icon-wrapper div h3 {
+  font-size: 1.3rem;
+  color: #364153;
+  line-height: .5rem;
+  text-align: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-bottom: .1rem;
+  margin-top: .1rem;
+}
+
+.username-icon-wrapper div:last-of-type {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: .3rem;
+  height: .3rem;
+  background-color: #0fc45a;
+  border: 2px solid #fff;
+  border-radius: 30px;
+}

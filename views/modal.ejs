@@ -1,0 +1,48 @@
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <form method="POST" action="/" >
+            <h2>Pick your username</h2>
+            <div class="username-form-wrapper" id="username-form-wrapper">
+                <h4 id="username-title">Username</h4>
+                <% if (currentUser.length > 0) { %>
+                    <div class="mimic-username-input">
+                        <h4><%= currentUser %></h4>
+                    </div>
+                <% } else { %>
+                    <input 
+                        type="text" 
+                        name="userName" 
+                        id="username-input" 
+                        placeholder="BobBilly745" 
+                        oninvalid="this.setCustomValidity('Please enter a different username.')"
+                        oninput="setCustomValidity('')"
+                        required 
+                    />
+                <% } %>
+                <h5>This is your public display name.</h5>
+            </div>
+            <button type="submit" class="enter-username-btn" id="form-submit-btn">Enter</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function checkSubmit(e) {
+        const input = document.getElementById('username-input');
+        const parentDiv = document.getElementById('username-form-wrapper');
+        const usernameh4Title = document.getElementById('username-title');
+        if (input.value.length <= 1) {
+            e.preventDefault();
+            const h4Warning = document.createElement('h4');
+            h4Warning.setAttribute('id', 'h4Warning');
+            h4Warning.textContent = 'Username must be at least 2 characters';
+            h4Warning.style.color = '#b60915';
+            parentDiv.appendChild(h4Warning);
+            input.style.borderColor = '#b60915';
+            usernameh4Title.style.color = '#b60915';
+        };
+    };
+    
+    const btn = document.getElementById('form-submit-btn');
+    btn.addEventListener('click', checkSubmit);
+</script>

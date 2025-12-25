@@ -1,0 +1,39 @@
+.phone-bottom-div {
+    display: grid;
+    grid-template-columns: 8.3fr 1fr;
+    gap: .7rem;
+}
+
+.phone-bottom-div input {
+    padding: .8rem .5rem;
+    border: 1px solid white;
+    border-radius: 12px;
+    background-color: transparent;
+}
+
+.phone-bottom-div button {
+    padding: .6rem;
+    background-color: #18181b;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    border-radius: 30px;
+    align-self: center;
+    justify-self: flex-end;
+}
+
+.phone-bottom-div button svg {
+    width: 1.2rem;
+    fill: #fff;
+}
+
+@media only screen and (max-width:  743px) {
+    .phone-bottom-div {
+        display: flex;
+        gap: .7rem;
+    }
+
+    .phone-bottom-div input {
+        flex: 1;
+    }
+}

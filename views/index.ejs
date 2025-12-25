@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="/phone.css">
+        <link rel="stylesheet" href="/phoneTop.css">
+        <link rel="stylesheet" href="/modal.css">
+        <link rel="stylesheet" href="/message.css">
+        <link rel="stylesheet" href="/keyboardInput.css">
+        <link rel="stylesheet" href="/warning.css">
+        <title><%= title %> | axlothecook</title>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div class="background">
+            <div class="blob blob1"></div>
+            <div class="blob blob2"></div>
+            <div class="blob blob3"></div>
+            <div class="global-wrapper">
+                <%- include('modal', { currentUser }) %>
+                <% if (warning.warning) { %>
+                    <%- include('warningTemplate', { warning }) %>
+                <% } %>
+                <div class="phone-wrapper">
+                    <div class="btn-left-side bls-top"></div>
+                    <div class="btn-left-side bls-bottom"></div>
+                    <div class="btn-right-side"></div>
+                    <div class="phone-top-div">
+                        <div class="user-info-wrapper">
+                            <h3><%= title %></h3>
+                            <button onclick="openModal()">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    viewBox="0 0 24 24" 
+                                    id="user-rounded-svg"
+                                >
+                                    <circle cx="12" cy="6" r="4" stroke="#1C274C" stroke-width="1.5"></circle>
+                                    <path d="M15 20.6151C14.0907 20.8619 13.0736 21 12 21C8.13401 21 5 19.2091 5 17C5 14.7909 8.13401 13 12 13C15.866 13 19 14.7909 19 17C19 17.3453 18.9234 17.6804 18.7795 18" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <%- include('usernameIcon', { currentUser }) %>
+                    </div>
+                    <div class="messages-wrapper" id="messages-wrapper">
+                        <% for (let i = (messages.length - 1); i >= 0; i--) { %>
+                            <%- include('messageTemplate', { data: messages[i], currentUser }) %>
+                        <% } %>
+                    </div>
+                    <%- include('keyboardInput') %>
+                </div>
+            </div>
+        </div>
+        <script>
+            const modal = document.getElementById('modal');
+            const openModal = () => modal.style.display = 'block';
+            window.onclick = (e) => (e.target == modal) ? modal.style.display = "none" : null;
+        </script>
+    </body>
+</html>

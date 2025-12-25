@@ -1,0 +1,29 @@
+<div class="warning-wrapper" id="warning-wrapper">
+    <% if (warning.repeatedLogInError) { %>
+        <svg fill="transparent" width="1.5rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="warning-svg">
+            <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="#660f24" stroke-width="2"></path>
+            <path d="M12 8L12 12.5" stroke="#660f24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M13 15.5C13 16.0523 12.5523 16.5 12 16.5C11.4477 16.5 11 16.0523 11 15.5C11 14.9477 11.4477 14.5 12 14.5C12.5523 14.5 13 14.9477 13 15.5Z" fill="#660f24"></path>
+        </svg>
+    <% } else { %>
+        <svg width="1.5rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="info-svg">
+            <g id="Warning / Info">
+                <path id="Vector" d="M12 11V16M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21ZM12.0498 8V8.1L11.9502 8.1002V8H12.0498Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </svg>
+    <% } %>
+    <h2><%= warning.message %></h2>
+</div>
+
+<script>
+    function testForWarning() {
+        const div = document.getElementById('warning-wrapper');
+        if(document.body.contains(div)) {
+            setTimeout(() => {
+                div.style.display = 'none';
+            }, 3000);
+        };
+    };
+
+    testForWarning();
+</script>
