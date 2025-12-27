@@ -4,10 +4,13 @@ const { _ } = require('lodash');
 let {
   warning,
   messages,
+  counter,
   reformatDate
 } = require('../data');
 
+// let currentUser = localStorage.getItem('currentId') || '';
 let currentUser = '';
+// let currentid = 0;
 
 indexRouter.get('/', (req, res) => {
   res.render('index', {
@@ -17,6 +20,11 @@ indexRouter.get('/', (req, res) => {
     warning
   });
 });
+
+// indexRouter.get('/id', (req, res) => {
+//   res.send(currentid++)
+//   res.redirect('/')
+// });
 
 indexRouter.post('/', (req, res) => {
   if (_.isEmpty(req.body)) {

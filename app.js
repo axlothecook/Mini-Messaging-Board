@@ -3,6 +3,7 @@ const app = express();
 const path = require ('node:path');
 const morgan = require('morgan');
 const indexRouter = require('./routes/indexRouter');
+require('dotenv').config();
 
 app.use(morgan('dev'));
 app.set('views', path.join(__dirname, 'views'));
@@ -24,7 +25,7 @@ app.use((req, res) => {
     res.status(404).sendFile('/public/404.html', { root: __dirname });
 });
 
-const PORT = 3000;
+const PORT = process.env.NODE_ENV || 4000;
 app.listen(PORT, (error) => {
     if (error) throw error;
     console.log(`My first Express app - listening on port ${PORT}!`);
