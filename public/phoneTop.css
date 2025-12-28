@@ -55,6 +55,8 @@
   background-color: #f4f4f5;
   border: 4px solid #ad46ff;
   border-radius: 50%;
+  width: .5rem;
+  height: .5rem;
   padding: .5rem;
   display: flex;
   align-items: center;
@@ -68,8 +70,6 @@
   text-align: center;
   margin-block-start: 0;
   margin-block-end: 0;
-  margin-bottom: .1rem;
-  margin-top: .1rem;
 }
 
 .username-icon-wrapper div:last-of-type {

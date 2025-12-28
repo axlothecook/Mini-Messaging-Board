@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="/message.css">
         <link rel="stylesheet" href="/keyboardInput.css">
         <link rel="stylesheet" href="/warning.css">
-        <title><%= title %> | axlothecook</title>
+        <title>Mini Messaging Board | axlothecook</title>
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
     </head>
     <body>
@@ -16,17 +16,19 @@
             <div class="blob blob2"></div>
             <div class="blob blob3"></div>
             <div class="global-wrapper">
-                <%- include('modal', { currentUser }) %>
-                <% if (warning.warning) { %>
+                <% if (warning) { %>
                     <%- include('warningTemplate', { warning }) %>
                 <% } %>
+                <%- include('modal', { username, errors }) %>
+                <% const errorsVar = errors; %>
+                <% const alarmPopup = createNewUserAlarm; %>
                 <div class="phone-wrapper">
                     <div class="btn-left-side bls-top"></div>
                     <div class="btn-left-side bls-bottom"></div>
                     <div class="btn-right-side"></div>
                     <div class="phone-top-div">
                         <div class="user-info-wrapper">
-                            <h3><%= title %></h3>
+                            <h3>Mini Messaging Board</h3>
                             <button onclick="openModal()">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg" 
@@ -38,14 +40,18 @@
                                 </svg>
                             </button>
                         </div>
-                        <%- include('usernameIcon', { currentUser }) %>
+                        <%- include('usernameIcon', { username: username }) %>
                     </div>
                     <div class="messages-wrapper" id="messages-wrapper">
-                        <% for (let i = (messages.length - 1); i >= 0; i--) { %>
-                            <%- include('messageTemplate', { data: messages[i], currentUser }) %>
+                        <% if (messagesArr.length > 0 && messagesArr[0].messages) { %>
+                            <% for (let user = (messagesArr.length - 1); user >= 0; user--) { %>
+                                <% messagesArr[user].messages.forEach(msg => { %>
+                                    <%- include('messageTemplate', { data: { user_id: messagesArr[user].user_id, username: messagesArr[user].username, text: msg[0], addedPt1: msg[1], addedPt2: msg[2] }, id: userId }) %>
+                                <% }) %>
+                            <% } %>
                         <% } %>
                     </div>
-                    <%- include('keyboardInput') %>
+                    <%- include('keyboardInput', { userId }) %>
                 </div>
             </div>
         </div>
@@ -53,6 +59,20 @@
             const modal = document.getElementById('modal');
             const openModal = () => modal.style.display = 'block';
             window.onclick = (e) => (e.target == modal) ? modal.style.display = "none" : null;
+            function preventDefault() {
+                const errors = "<%= errorsVar %>";
+                if(errors && errors.length !== 0) {
+                    modal.style.display = 'block';
+                    window.onclick = (e) => (e.target == modal) ? modal.style.display = "block" : null;
+                };
+            };
+
+            function kickstartPopup() {
+                const createNewUserAlarm = "<% alarmPopup %>";
+                if(createNewUserAlarm) modal.style.display = 'block';
+            };
+            preventDefault();
+            kickstartPopup();
         </script>
     </body>
 </html>

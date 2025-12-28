@@ -1,6 +1,6 @@
 <div>
-    <form method="POST" action="/" class="phone-bottom-div">
-        <input type="text" name="userMsg" placeholder="Type a message..." />
+    <form method="POST" action="/<%= userId %>/newMessage" class="phone-bottom-div">
+        <input type="text" name="messageText" placeholder="Type a message..." />
         <button type="submit">
             <svg 
                 fill="none" 

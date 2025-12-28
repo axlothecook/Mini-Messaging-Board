@@ -1,12 +1,16 @@
 <div class="username-wrapper">
     <div class="username-icon-wrapper">
         <div>
-            <h3><%= currentUser[0] %></h3>
+            <% if (username) { %>
+                <h3><%= username[0] %></h3>
+            <% } else { %>
+                <h3></h3>
+            <% } %>
         </div>
         <div></div>
     </div>
-    <% if (currentUser.length > 0) { %>
-        <h4><%= currentUser %></h4>
+    <% if (username) { %>
+        <h4><%= username %></h4>
     <% } else { %>
         <h4>Your username</h4>
     <% } %>

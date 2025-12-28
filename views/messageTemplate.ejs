@@ -1,9 +1,9 @@
-<div class="msg" style="align-items: <%= (data.user === currentUser) ? 'flex-end' : 'flex-start' %>">
+<div class="msg" style="align-items: <%= (data.user_id === id) ? 'flex-end' : 'flex-start' %>">
     <div>
-        <h3><b><%= data.user %></b></h3>
-        <h3><%= data.added %></h3>
+        <h3><b><%= data.username %></b></h3>
+        <h3><%= data.addedPt1 %>, <%= data.addedPt2 %></h3>
     </div>
-    <div style="background-color: <%= (data.user === currentUser) ? '#00a6f4' : '#444d5d' %>">
+    <div style="background-color: <%= (data.user_id === id) ? '#00a6f4' : '#444d5d' %>">
         <h3><%= data.text %></h3>
     </div>
 </div>
