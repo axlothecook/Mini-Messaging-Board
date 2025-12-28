@@ -11,14 +11,14 @@ CREATE TABLE IF NOT EXISTS users (
 
 const main = async () => {
     console.log('seeding...');
-    // const client = new Client({ connectionString: process.env.NODE_ENV_DB });
-    const client = new Client({
-        host: process.env.DATABASE_HOST,
-        database: process.env.DATABASE_NAME,
-        username: process.env.DATABASE_USER,
-        password: process.env.DATABASE_PASSWORD,
-        ssl: true
-    });
+    const client = new Client({ connectionString: process.env.NODE_ENV_DB2 });
+    // const client = new Client({
+    //     host: process.env.DATABASE_HOST,
+    //     database: process.env.DATABASE_NAME,
+    //     username: process.env.DATABASE_USER,
+    //     password: process.env.DATABASE_PASSWORD,
+    //     ssl: true
+    // });
     await client.connect();
     await client.query(SQL);
     await client.end();
