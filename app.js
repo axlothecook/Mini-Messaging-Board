@@ -22,8 +22,6 @@ app.use((err, req, res, next) => {
 });
 
 app.use((req, res) => {
-    console.log('error:');
-    console.log(req);
     res.status(404).sendFile('/public/404.html', { root: __dirname });
 });
 

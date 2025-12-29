@@ -5,7 +5,7 @@ const SQL = `
 CREATE TABLE IF NOT EXISTS users (
     user_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     username VARCHAR (255),
-    messages text[][][]
+    messages text[][]
 );
 `;
 

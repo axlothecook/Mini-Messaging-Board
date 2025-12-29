@@ -35,13 +35,7 @@ let currentUser = null;
 
 const usersMessagesGet = async (req, res) => {
     const messagesArr = await db.getAllMessages();
-    if(!currentUser) currentUser = JSON.parse(localStorage.getItem('currentId')) || null;
-    console.log('messages:');
-    console.log(messagesArr);
-    // console.log(messagesArr[0].messages[0])
-    // localStorage.clear();
-    console.log('current user:');
-    console.log(currentUser);
+    if(!currentUser) currentUser = JSON.parse(localStorage.getItem('id')) || null;
 
     res.render('index', {
         messagesArr: messagesArr ? messagesArr : null,
@@ -67,7 +61,6 @@ const createUserPost = [
         } else {
             const errors = validationResult(req);
             if(!errors.isEmpty()) {
-                // console.log(errors.array())
                 return res.status(400).render('index', {
                     errors: errors.array(),
                     username: null,
@@ -104,7 +97,6 @@ const createMessagePost = [
         } else {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                console.log(errors.array()[0].msg);
                 warning = {
                     message: errors.array()[0].msg,
                     welcomeEmoji: false,
