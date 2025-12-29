@@ -43,11 +43,13 @@
                         <%- include('usernameIcon', { username: username }) %>
                     </div>
                     <div class="messages-wrapper" id="messages-wrapper">
-                        <% if (messagesArr.length > 0 && messagesArr[0].messages) { %>
+                        <% if (messagesArr.length > 0) { %>
                             <% for (let user = (messagesArr.length - 1); user >= 0; user--) { %>
-                                <% messagesArr[user].messages.forEach(msg => { %>
-                                    <%- include('messageTemplate', { data: { user_id: messagesArr[user].user_id, username: messagesArr[user].username, text: msg[0], added: msg[1] }, id: userId }) %>
-                                <% }) %>
+                                <% if (messagesArr[user].messages) { %>
+                                    <% messagesArr[user].messages.forEach(msg => { %>
+                                        <%- include('messageTemplate', { data: { user_id: messagesArr[user].user_id, username: messagesArr[user].username, text: msg[0], added: msg[1] }, id: userId }) %>
+                                    <% }) %>
+                                <% } %>
                             <% } %>
                         <% } %>
                     </div>

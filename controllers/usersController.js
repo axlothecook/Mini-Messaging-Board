@@ -1,7 +1,5 @@
 const db = require('../db/queries');
 const { format } = require('date-fns');
-var LocalStorage = require('node-localstorage').LocalStorage,
-localStorage = new LocalStorage('./scratch');
 const {
     body,
     validationResult,
@@ -27,7 +25,7 @@ const validateMessage = [
     body('messageText').trim()
     .optional({ values: "falsy" })
     .isLength({ min: 0, max: 100 }).withMessage(`Message ${lengthMessageErr}`)
-    .matches(/^[A-Za-z0-9,.!><@ ]+$/).withMessage(`Message ${alphaMsgErr}`)
+    .matches(/^[A-Za-z0-9,.!><@ ']+$/).withMessage(`Message ${alphaMsgErr}`)
 ];
 
 let warning = null;
@@ -35,7 +33,7 @@ let currentUser = null;
 
 const usersMessagesGet = async (req, res) => {
     const messagesArr = await db.getAllMessages();
-    if(!currentUser) currentUser = JSON.parse(localStorage.getItem('currentUserId')) || null;
+    
     res.render('index', {
         messagesArr: messagesArr ? messagesArr : null,
         username: currentUser ? currentUser.username : null,
@@ -68,7 +66,7 @@ const createUserPost = [
                 });
             };
             const { username } = matchedData(req);
-            await db.registerUser(username);
+            currentUser = await db.registerUser(username);
             warning = {
                 message: `Welcome to the chat ${username}!`,
                 welcomeEmoji: true,
