@@ -16,7 +16,7 @@ async function registerUser(username) {
 };
 
 async function insertMessage({ messageText, date }, userId) {
-    let object = `{{${messageText}, ${date}}}`;
+    let object = `{{{"${messageText}"}, {"${date}"}}}`;
     await pool.query("UPDATE users SET messages = ARRAY_CAT(($1), messages) WHERE user_id = ($2)", [object, userId]);
 };
 

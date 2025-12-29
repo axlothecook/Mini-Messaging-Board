@@ -46,7 +46,7 @@
                         <% if (messagesArr.length > 0 && messagesArr[0].messages) { %>
                             <% for (let user = (messagesArr.length - 1); user >= 0; user--) { %>
                                 <% messagesArr[user].messages.forEach(msg => { %>
-                                    <%- include('messageTemplate', { data: { user_id: messagesArr[user].user_id, username: messagesArr[user].username, text: msg[0], addedPt1: msg[1], addedPt2: msg[2] }, id: userId }) %>
+                                    <%- include('messageTemplate', { data: { user_id: messagesArr[user].user_id, username: messagesArr[user].username, text: msg[0], added: msg[1] }, id: userId }) %>
                                 <% }) %>
                             <% } %>
                         <% } %>

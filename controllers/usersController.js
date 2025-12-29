@@ -27,7 +27,7 @@ const validateMessage = [
     body('messageText').trim()
     .optional({ values: "falsy" })
     .isLength({ min: 0, max: 100 }).withMessage(`Message ${lengthMessageErr}`)
-    .matches(/^[A-Za-z0-9,. ]+$/).withMessage(`Message ${alphaMsgErr}`)
+    .matches(/^[A-Za-z0-9,.!><@ ]+$/).withMessage(`Message ${alphaMsgErr}`)
 ];
 
 let warning = null;
@@ -36,7 +36,6 @@ let currentUser = null;
 const usersMessagesGet = async (req, res) => {
     const messagesArr = await db.getAllMessages();
     if(!currentUser) currentUser = JSON.parse(localStorage.getItem('currentUserId')) || null;
-
     res.render('index', {
         messagesArr: messagesArr ? messagesArr : null,
         username: currentUser ? currentUser.username : null,
@@ -86,7 +85,7 @@ const createMessagePost = [
     async (req, res) => {
         if (req.body.messageText.length === 0 && currentUser !== null) {
             return res.redirect('/');
-        } else if (req.body.messageText.length === 0 && !currentUser) {
+        } else if (req.body.messageText.length >= 0 && !currentUser) {
             warning = {
                 message: 'Enter your username first!',
                 welcomeEmoji: false,
