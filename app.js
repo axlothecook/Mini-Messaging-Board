@@ -28,5 +28,5 @@ app.use((req, res) => {
 const PORT = process.env.NODE_ENV_PORT || 3005;
 app.listen(PORT, (error) => {
     if (error) throw error;
-    console.log(`My first Express app - listening on port ${PORT}!`);
+    console.log(`The app launched is listening on port ${PORT}!`);
 });

@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 const main = async () => {
     console.log('seeding...');
-    const client = new Client({ connectionString: process.env.NODE_ENV_DB3 });
+    const client = new Client({ connectionString: process.env.NODE_ENV_DB });
     await client.connect();
     await client.query(SQL);
     await client.end();

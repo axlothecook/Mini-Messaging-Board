@@ -35,13 +35,13 @@ let currentUser = null;
 
 const usersMessagesGet = async (req, res) => {
     const messagesArr = await db.getAllMessages();
-    if(!currentUser) currentUser = JSON.parse(localStorage.getItem('id')) || null;
+    if(!currentUser) currentUser = JSON.parse(localStorage.getItem('currentUserId')) || null;
 
     res.render('index', {
         messagesArr: messagesArr ? messagesArr : null,
         username: currentUser ? currentUser.username : null,
-        userId: currentUser ? currentUser.id : null,
-        createNewUserAlarm: false,
+        userId: currentUser ? currentUser.id : 0,
+        createNewUserAlarm: currentUser ? false : 'true',
         errors: [],
         warning: warning
     });
@@ -62,9 +62,9 @@ const createUserPost = [
             const errors = validationResult(req);
             if(!errors.isEmpty()) {
                 return res.status(400).render('index', {
-                    errors: errors.array(),
                     username: null,
                     createNewUserAlarm: false,
+                    errors: errors.array(),
                     warning: null
                 });
             };
@@ -86,7 +86,7 @@ const createMessagePost = [
     async (req, res) => {
         if (req.body.messageText.length === 0 && currentUser !== null) {
             return res.redirect('/');
-        } else if (req.body.messageText.length === 0 && currentUser === null) {
+        } else if (req.body.messageText.length === 0 && !currentUser) {
             warning = {
                 message: 'Enter your username first!',
                 welcomeEmoji: false,

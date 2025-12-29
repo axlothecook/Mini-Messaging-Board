@@ -62,14 +62,14 @@
             function preventDefault() {
                 const errors = "<%= errorsVar %>";
                 if(errors && errors.length !== 0) {
-                    modal.style.display = 'block';
-                    window.onclick = (e) => (e.target == modal) ? modal.style.display = "block" : null;
+                    openModal();
+                    window.onclick = (e) => (e.target == modal) ? openModal() : null;
                 };
             };
 
             function kickstartPopup() {
-                const createNewUserAlarm = "<% alarmPopup %>";
-                if(createNewUserAlarm) modal.style.display = 'block';
+                let alarmPopupVar = "<%= alarmPopup %>";
+                if(alarmPopupVar === 'true') openModal();
             };
             preventDefault();
             kickstartPopup();

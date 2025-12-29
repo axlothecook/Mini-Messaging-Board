@@ -9,7 +9,7 @@ async function getAllMessages() {
 
 async function registerUser(username) {
     const { rows } = await pool.query(`INSERT INTO users (username) VALUES ($1) RETURNING user_id`, [username]);
-    localStorage.setItem('id', JSON.stringify({
+    localStorage.setItem('currentUserId', JSON.stringify({
         id: rows[0].user_id, 
         username
     }));
